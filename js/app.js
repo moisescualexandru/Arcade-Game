@@ -2,6 +2,7 @@ var columnsArray = [60, 145, 230];
 var speedArray = [5, 10, 7, 11, 12, 6, 8, 9];
 var score = document.querySelector('.score');
 var scoreCount = 0;
+var lives = 5;
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -113,16 +114,8 @@ var allEnemies = [enemy1, enemy2, enemy3];
 const player = new Player;
 
 function checkCollisions() {
-    var lives = document.querySelectorAll('.life').length;
     for (let enemy of allEnemies) {
         if (Math.floor(enemy.x/100)*100 === player.x && enemy.y === player.y) {
-            lives--;
-            if (!lives.length) {
-                document.querySelector('.life').remove();
-            }
-            else {
-                
-            }
             player.x = 200;
             player.y = 400;
         }
