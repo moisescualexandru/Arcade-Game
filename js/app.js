@@ -1,5 +1,7 @@
 var columnsArray = [60, 145, 230];
 var speedArray = [5, 10, 7, 11, 12, 6, 8, 9];
+var score = document.querySelector('.score');
+var scoreCount = 0;
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -79,6 +81,8 @@ class Player {
                     else {
                         this.y = 400;
                         this.x = 200;
+                        scoreCount += 100;
+                        score.textContent = scoreCount;
                     }
                 }
                 else {
