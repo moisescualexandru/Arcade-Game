@@ -1,3 +1,6 @@
+var columnsArray = [60, 145, 230];
+var speedArray = [5, 10, 7, 11, 12, 6, 8, 9];
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
