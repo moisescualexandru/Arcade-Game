@@ -103,6 +103,15 @@ const enemy3 = new Enemy;
 var allEnemies = [enemy1, enemy2, enemy3];
 const player = new Player;
 
+function checkCollisions() {
+    for (let enemy of allEnemies) {
+        if (Math.floor(enemy.x/100)*100 === player.x && enemy.y === player.y) {
+            player.x = 200;
+            player.y = 400;
+        }
+    }
+}
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
