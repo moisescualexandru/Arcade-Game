@@ -113,8 +113,16 @@ var allEnemies = [enemy1, enemy2, enemy3];
 const player = new Player;
 
 function checkCollisions() {
+    var lives = document.querySelectorAll('.life').length;
     for (let enemy of allEnemies) {
         if (Math.floor(enemy.x/100)*100 === player.x && enemy.y === player.y) {
+            lives--;
+            if (!lives.length) {
+                document.querySelector('.life').remove();
+            }
+            else {
+                
+            }
             player.x = 200;
             player.y = 400;
         }
