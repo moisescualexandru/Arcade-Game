@@ -102,11 +102,13 @@ class Player {
         if (scoreCount >= 500 && allEnemies.length < 4) {
             const enemy4 = new Enemy;
             allEnemies.push(enemy4);
+            document.querySelector('.level').textContent = 'Intermediate';
         } else if (scoreCount >= 1000 && allEnemies.length < 5) {
             const enemy5 = new Enemy;
             allEnemies.push(enemy5);
             const enemy6 = new Enemy;
             allEnemies.push(enemy6);
+            document.querySelector('.level').textContent = 'Expert';
         }
     }
 
