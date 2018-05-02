@@ -99,13 +99,20 @@ class Player {
                 }
                 break;
         }
+        if (scoreCount >= 500 && allEnemies.length < 4) {
+            const enemy4 = new Enemy;
+            allEnemies.push(enemy4);
+        } else if (scoreCount >= 1000 && allEnemies.length < 5) {
+            const enemy5 = new Enemy;
+            allEnemies.push(enemy5);
+            const enemy6 = new Enemy;
+            allEnemies.push(enemy6);
+        }
     }
 
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// Instantiating the objects
 
 const enemy1 = new Enemy;
 const enemy2 = new Enemy;
