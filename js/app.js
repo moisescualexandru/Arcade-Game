@@ -2,7 +2,7 @@ var columnsArray = [60, 145, 230];
 var speedArray = [5, 10, 7, 11, 12, 6, 8, 9];
 var score = document.querySelector('.score');
 var scoreCount = 0;
-var lives = 5;
+var lives = 4;
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -137,16 +137,11 @@ function decreaseLife() {
     } else {
         document.querySelector('.comun').style.display = 'none';
         document.querySelector('.gameover').style.display = 'block';
-        document.removeEventListener('keyup', function(e) {
-            var allowedKeys = {
-                37: 'left',
-                38: 'up',
-                39: 'right',
-                40: 'down'
-            };
-
-            player.handleInput(allowedKeys[e.keyCode]);
-        });
+        document.removeEventListener('keyup', function(e) {});
+        while (allEnemies.length) {
+            allEnemies.pop();
+        }
+        delete window.player;
     }
 }
 

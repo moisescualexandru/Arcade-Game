@@ -22,7 +22,7 @@ span {
 	font-size: 1.3em;
 }
 
-.game-over {
+.gameover {
 	display: none;
 	position: fixed;
 	z-index: 1;
