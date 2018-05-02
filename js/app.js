@@ -3,6 +3,7 @@ var speedArray = [5, 10, 7, 11, 12, 6, 8, 9];
 var score = document.querySelector('.score');
 var scoreCount = 0;
 var lives = 4;
+var anime = true;
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -137,11 +138,11 @@ function decreaseLife() {
     } else {
         document.querySelector('.comun').style.display = 'none';
         document.querySelector('.gameover').style.display = 'block';
-        document.removeEventListener('keyup', function(e) {});
-        while (allEnemies.length) {
+        document.querySelector('.scoreOvr').textContent = scoreCount;
+        while (allEnemies.length >3) {
             allEnemies.pop();
         }
-        delete window.player;
+        anime = false;
     }
 }
 

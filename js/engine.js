@@ -55,7 +55,11 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+        if (anime === true) {
+            win.requestAnimationFrame(main);
+        } else {
+            win.cancelAnimationFrame(main);
+        }
     }
 
     /* This function does some initial setup that should only occur once,
