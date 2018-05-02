@@ -6,9 +6,6 @@ var lives = 5;
 
 // Enemies our player must avoid
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -20,9 +17,6 @@ var Enemy = function() {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
     this.speed *= dt;
     this.x += this.speedX;
     if (this.x > 650) {
@@ -37,9 +31,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// The Player class that loads the default image and sets the starting position
 class Player {
     constructor() {
         this.sprite = 'images/char-boy.png';
@@ -83,6 +75,7 @@ class Player {
                         this.y = 400;
                         this.x = 200;
                         scoreCount += 100;
+                        increaseDifficulty();
                         score.textContent = scoreCount;
                     }
                 }
@@ -99,17 +92,6 @@ class Player {
                 }
                 break;
         }
-        if (scoreCount >= 500 && allEnemies.length < 4) {
-            const enemy4 = new Enemy;
-            allEnemies.push(enemy4);
-            document.querySelector('.level').textContent = 'Intermediate';
-        } else if (scoreCount >= 1000 && allEnemies.length < 5) {
-            const enemy5 = new Enemy;
-            allEnemies.push(enemy5);
-            const enemy6 = new Enemy;
-            allEnemies.push(enemy6);
-            document.querySelector('.level').textContent = 'Expert';
-        }
     }
 
 }
@@ -122,12 +104,38 @@ const enemy3 = new Enemy;
 var allEnemies = [enemy1, enemy2, enemy3];
 const player = new Player;
 
+//This checks if the player and the enemies occupy the same spot on the canvas
 function checkCollisions() {
     for (let enemy of allEnemies) {
         if (Math.floor(enemy.x/100)*100 === player.x && enemy.y === player.y) {
             player.x = 200;
             player.y = 400;
+            decreaseLife();
         }
+    }
+}
+
+//Increase the difficulty of the game if the player reaches score limits
+function increaseDifficulty() {
+    if (scoreCount >= 500 && allEnemies.length < 4) {
+        const enemy4 = new Enemy;
+        allEnemies.push(enemy4);
+        document.querySelector('.level').textContent = 'Intermediate';
+    } else if (scoreCount >= 1000 && allEnemies.length < 5) {
+        const enemy5 = new Enemy;
+        allEnemies.push(enemy5);
+        const enemy6 = new Enemy;
+        allEnemies.push(enemy6);
+        document.querySelector('.level').textContent = 'Expert';
+    }
+}
+
+function decreaseLife() {
+    if (lives > 0) {
+        document.querySelector('.life').remove();
+        lives--;
+    } else {
+        
     }
 }
 
