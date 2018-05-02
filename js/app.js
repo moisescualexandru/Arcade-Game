@@ -135,7 +135,18 @@ function decreaseLife() {
         document.querySelector('.life').remove();
         lives--;
     } else {
-        
+        document.querySelector('.comun').style.display = 'none';
+        document.querySelector('.gameover').style.display = 'block';
+        document.removeEventListener('keyup', function(e) {
+            var allowedKeys = {
+                37: 'left',
+                38: 'up',
+                39: 'right',
+                40: 'down'
+            };
+
+            player.handleInput(allowedKeys[e.keyCode]);
+        });
     }
 }
 
