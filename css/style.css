@@ -27,6 +27,7 @@ span {
 	position: fixed;
 	z-index: 1;
 	padding-top: 15%;
+	padding-bottom: 15%;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -73,4 +74,15 @@ span {
 	100% {
 		transform: scale(1,1);
 	}
+}
+
+button {
+	font-size: 1em;
+	color: red;
+	cursor: pointer;
+	height: 60px;
+	width: 100px;
+	border: 2px solid aqua;
+	border-radius: 20px;
+	margin: 0 auto;
 }
