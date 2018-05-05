@@ -1,6 +1,28 @@
-frontend-nanodegree-arcade-game
-===============================
+#Classic Arcade Game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This application is a classic frogger arcade game.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+# Techonologies used
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+
+# Instructions
+
+The mai objective for this game is to get your character from the bottom of the playing board to the water, which is located on the top.
+
+To do this, you must avoid the enemies on the screen.
+
+You start with 5 lives. Everytime you are hit by an enemy, one life will be taken from you. 
+
+The game finishes when all your lives are depleted.
+
+Everytime you reach the water, you gain 100 points. 
+
+You can collect gems throughout the game. Every gem collected gives you 500 points.
+
+The game will get harder as you score more points (more enemies will try to stop you).
+
+Have fun!!!
+
