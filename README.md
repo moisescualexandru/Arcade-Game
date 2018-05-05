@@ -1,4 +1,4 @@
-#Classic Arcade Game
+# Classic Arcade Game
 
 This application is a classic frogger arcade game.
 
