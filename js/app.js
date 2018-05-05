@@ -6,6 +6,7 @@ var scoreCount = 0;
 var lives = 4;
 var anime = true;
 var moves = 0;
+var control = false;
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -60,6 +61,7 @@ class Player {
                 else{
                     this.x -= 100; 
                     moves++;
+                    drawGem();
                 }
                 break;
             case 'right':
@@ -69,6 +71,7 @@ class Player {
                 else {
                     this.x += 100;
                     moves++;
+                    drawGem();
                 }
                 break;
             case 'up':
@@ -83,10 +86,13 @@ class Player {
                         increaseDifficulty();
                         score.textContent = scoreCount;
                         moves++;
+                        drawGem();
                     }
                 }
                 else {
                     this.y -= 85;
+                    moves++;
+                    drawGem();
                 }
                 break;
             case 'down':
@@ -96,6 +102,7 @@ class Player {
                 else {
                     this.y += 85;    
                     moves++;
+                    drawGem();
                 }
                 break;
         }
@@ -113,9 +120,12 @@ class Gem {
     }
 
     render() {
-        this.x = xArray[Math.floor(Math.random()*xArray.length)];
-        this.y = columnsArray[Math.floor(Math.random()*columnsArray.length)];
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+
+    update() {
+        this.x = this.x;
+        this.y = this.y;
     }
 }
 
@@ -136,6 +146,24 @@ function checkCollisions() {
             player.y = 400;
             decreaseLife();
         }
+    }
+
+    if (player.x === gem.x && player.y === gem.y) {
+        scoreCount += 500;
+        score.textContent = scoreCount;
+        control = false;
+        gem.x = -100;
+        gem.y = -100;
+    }
+}
+
+//Drawing the Gem on the canvas
+
+function drawGem () {
+    if (moves%5===0 && moves!==0 && !control) {
+        gem.x = xArray[Math.floor(Math.random()*xArray.length)];
+        gem.y = columnsArray[Math.floor(Math.random()*columnsArray.length)];
+        control = true;
     }
 }
 
