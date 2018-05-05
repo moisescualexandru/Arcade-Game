@@ -138,7 +138,7 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
-                if (row === 0 && col === 1 || row === 0 && col === 3) {
+                if (row === 0 && col === 1 || row === 0 && col === 2) {
                     ctx.drawImage(Resources.get('images/rock.png'), col * 101, row * 83);
                 }
                 else {
@@ -163,6 +163,9 @@ var Engine = (function(global) {
         });
 
         player.render();
+        if (moves%5 === 0 && moves!==0) {
+            gem.render();
+        }
     }
 
     /* This function does nothing but it could have been a good place to
@@ -183,7 +186,8 @@ var Engine = (function(global) {
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png',
-        'images/rock.png'
+        'images/rock.png',
+        'images/gem blue.png'
     ]);
     Resources.onReady(init);
 

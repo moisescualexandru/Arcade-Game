@@ -1,9 +1,11 @@
+var xArray = [0, 100, 200, 300, 400];
 var columnsArray = [60, 145, 230];
 var speedArray = [5, 10, 7, 11, 12, 6, 8, 9];
 var score = document.querySelector('.score');
 var scoreCount = 0;
 var lives = 4;
 var anime = true;
+var moves = 0;
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -57,6 +59,7 @@ class Player {
                 }
                 else{
                     this.x -= 100; 
+                    moves++;
                 }
                 break;
             case 'right':
@@ -65,11 +68,12 @@ class Player {
                 }
                 else {
                     this.x += 100;
+                    moves++;
                 }
                 break;
             case 'up':
                 if (this.y < 120) {
-                    if (this.x === 100 || this.x === 300) {
+                    if (this.x === 100 || this.x === 200) {
                         return;
                     }
                     else {
@@ -78,6 +82,7 @@ class Player {
                         scoreCount += 100;
                         increaseDifficulty();
                         score.textContent = scoreCount;
+                        moves++;
                     }
                 }
                 else {
@@ -90,11 +95,28 @@ class Player {
                 }
                 else {
                     this.y += 85;    
+                    moves++;
                 }
                 break;
         }
     }
 
+}
+
+//Gem object
+
+class Gem {
+    constructor() {
+        this.sprite = 'images/gem blue.png';
+        this.x = -100;
+        this.y = -100;
+    }
+
+    render() {
+        this.x = xArray[Math.floor(Math.random()*xArray.length)];
+        this.y = columnsArray[Math.floor(Math.random()*columnsArray.length)];
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
 }
 
 // Instantiating the objects
@@ -104,6 +126,7 @@ const enemy2 = new Enemy;
 const enemy3 = new Enemy;
 var allEnemies = [enemy1, enemy2, enemy3];
 const player = new Player;
+const gem = new Gem;
 
 //This checks if the player and the enemies occupy the same spot on the canvas
 function checkCollisions() {
