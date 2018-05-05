@@ -1,3 +1,4 @@
+//Declaring the global variables needed throughout the script
 var xArray = [0, 100, 200, 300, 400];
 var columnsArray = [60, 145, 230];
 var speedArray = [5, 10, 7, 11, 12, 6, 8, 9];
@@ -11,18 +12,18 @@ var control = false;
 // Enemies our player must avoid
 var Enemy = function() {
     // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.x = -100;
+    //Randomly selecting the position and the speed of the enemies
     this.y = columnsArray[Math.floor(Math.random()*columnsArray.length)];
     this.speedX = speedArray[Math.floor(Math.random()*speedArray.length)];
 };
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
+// Update the enemy's position
 Enemy.prototype.update = function(dt) {
     this.speed *= dt;
     this.x += this.speedX;
+    //Reseting the enemy position after it exits the game screen
     if (this.x > 650) {
         this.x = -100;
         this.y = columnsArray[Math.floor(Math.random()*columnsArray.length)];
@@ -30,7 +31,7 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -80,13 +81,13 @@ class Player {
                         return;
                     }
                     else {
-                        this.y = 400;
-                        this.x = 200;
                         scoreCount += 100;
                         increaseDifficulty();
                         score.textContent = scoreCount;
                         moves++;
                         drawGem();
+                        this.y = 400;
+                        this.x = 200;
                     }
                 }
                 else {
@@ -138,7 +139,7 @@ var allEnemies = [enemy1, enemy2, enemy3];
 const player = new Player;
 const gem = new Gem;
 
-//This checks if the player and the enemies occupy the same spot on the canvas
+//This checks if the player, enemies or gems occupy the same spot on the canvas
 function checkCollisions() {
     for (let enemy of allEnemies) {
         if (Math.floor(enemy.x/100)*100 === player.x && enemy.y === player.y) {
@@ -161,7 +162,7 @@ function checkCollisions() {
 //Drawing the Gem on the canvas
 
 function drawGem () {
-    if (moves%5===0 && moves!==0 && !control) {
+    if (moves%10===0 && moves!==0 && !control) {
         gem.x = xArray[Math.floor(Math.random()*xArray.length)] + 15;
         gem.y = columnsArray[Math.floor(Math.random()*columnsArray.length)] + 30;
         control = true;
@@ -183,6 +184,7 @@ function increaseDifficulty() {
     }
 }
 
+//Decreasing the life counter if the player is hit by an enemy
 function decreaseLife() {
     if (lives > 0) {
         document.querySelector('.life').remove();
@@ -199,7 +201,7 @@ function decreaseLife() {
 }
 
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
