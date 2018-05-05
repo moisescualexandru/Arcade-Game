@@ -148,9 +148,10 @@ function checkCollisions() {
         }
     }
 
-    if (player.x === gem.x && player.y === gem.y) {
+    if (player.x === gem.x-15 && player.y === gem.y-30) {
         scoreCount += 500;
         score.textContent = scoreCount;
+        increaseDifficulty();
         control = false;
         gem.x = -100;
         gem.y = -100;
@@ -161,19 +162,19 @@ function checkCollisions() {
 
 function drawGem () {
     if (moves%5===0 && moves!==0 && !control) {
-        gem.x = xArray[Math.floor(Math.random()*xArray.length)];
-        gem.y = columnsArray[Math.floor(Math.random()*columnsArray.length)];
+        gem.x = xArray[Math.floor(Math.random()*xArray.length)] + 15;
+        gem.y = columnsArray[Math.floor(Math.random()*columnsArray.length)] + 30;
         control = true;
     }
 }
 
 //Increase the difficulty of the game if the player reaches score limits
 function increaseDifficulty() {
-    if (scoreCount >= 500 && allEnemies.length < 4) {
+    if (scoreCount >= 2000 && allEnemies.length < 4) {
         const enemy4 = new Enemy;
         allEnemies.push(enemy4);
         document.querySelector('.level').textContent = 'Intermediate';
-    } else if (scoreCount >= 1000 && allEnemies.length < 5) {
+    } else if (scoreCount >= 4000 && allEnemies.length < 5) {
         const enemy5 = new Enemy;
         allEnemies.push(enemy5);
         const enemy6 = new Enemy;
