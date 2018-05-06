@@ -76,8 +76,8 @@ span {
 	}
 }
 
-button {
-	font-size: 1em;
+input {
+	font-size: 0.8em;
 	color: red;
 	cursor: pointer;
 	height: 60px;

@@ -110,13 +110,13 @@ class Player {
 
     increaseDifficulty() {
         if (scoreCount >= 2000 && allEnemies.length < 4) {
-            const enemy4 = new Enemy;
+            const enemy4 = new Enemy();
             allEnemies.push(enemy4);
             document.querySelector('.level').textContent = 'Intermediate';
         } else if (scoreCount >= 4000 && allEnemies.length < 5) {
-            const enemy5 = new Enemy;
+            const enemy5 = new Enemy();
             allEnemies.push(enemy5);
-            const enemy6 = new Enemy;
+            const enemy6 = new Enemy();
             allEnemies.push(enemy6);
             document.querySelector('.level').textContent = 'Expert';
         }
@@ -167,12 +167,12 @@ class Gem {
 
 // Instantiating the objects
 
-const enemy1 = new Enemy;
-const enemy2 = new Enemy;
-const enemy3 = new Enemy;
+const enemy1 = new Enemy();
+const enemy2 = new Enemy();
+const enemy3 = new Enemy();
 var allEnemies = [enemy1, enemy2, enemy3];
-const player = new Player;
-const gem = new Gem;
+const player = new Player();
+const gem = new Gem();
 
 //This checks if the player, enemies or gems occupy the same spot on the canvas
 function checkCollisions() {
