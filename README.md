@@ -10,6 +10,8 @@ This application is a classic frogger arcade game.
 
 # Instructions
 
+The game starts as soon as it loads. Use the arrow keys to move around the game board.
+
 The mai objective for this game is to get your character from the bottom of the playing board to the water, which is located on the top.
 
 To do this, you must avoid the enemies on the screen.
